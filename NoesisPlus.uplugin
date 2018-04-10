@@ -22,7 +22,7 @@
 	],
 	"Plugins": [
 		{
-			"Name": "NoesisRuntime",
+			"Name": "NoesisGUI",
 			"Enabled": true
 		}
 	]
