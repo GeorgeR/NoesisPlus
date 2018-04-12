@@ -31,3 +31,19 @@
 	{																						\
 		Noesis::DependencyObject::SetValue<NsString>(PropertyName##Property, PropertyName);	\
 	}
+
+#define NS_DECLARE_PROPERTY_ENUM(PropertyType, PropertyName)															\
+	static const Noesis::DependencyProperty* PropertyName##Property;													\
+	const PropertyType Get##PropertyName() const;																		\
+	void Set##PropertyName(PropertyType PropertyName);		
+
+#define NS_DEFINE_PROPERTY_ENUM(ClassName, PropertyType, PropertyName)													\
+	const DependencyProperty* ClassName::PropertyName##Property;														\
+	const PropertyType ClassName::Get##PropertyName() const																\
+	{																													\
+		return static_cast<PropertyType>(Noesis::DependencyObject::GetValue<int>(PropertyName##Property));				\
+	}																													\
+	void ClassName::Set##PropertyName(PropertyType PropertyName)														\
+	{																													\
+		Noesis::DependencyObject::SetValue<int>(PropertyName##Property, static_cast<int>(PropertyName));				\
+	}
