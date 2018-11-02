@@ -5,16 +5,19 @@ public class NoesisPlus : ModuleRules
 	public NoesisPlus(ReadOnlyTargetRules Target) : base(Target)
 	{
 		PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
-		
-		PublicIncludePaths.AddRange(
-			new string[] {
-				"NoesisPlus/Public"
-			});
 
-		PrivateIncludePaths.AddRange(
-			new string[] {
-				"NoesisPlus/Private",
-			});
+	    if (Target.Version.MinorVersion <= 19)
+	    {
+            PublicIncludePaths.AddRange(
+			    new string[] {
+				    "NoesisPlus/Public"
+			    });
+
+		    PrivateIncludePaths.AddRange(
+			    new string[] {
+				    "NoesisPlus/Private",
+			    });
+        }
 
 		PublicDependencyModuleNames.AddRange(
 			new string[]
