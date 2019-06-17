@@ -16,6 +16,9 @@
 		Noesis::DependencyObject::SetValue<PropertyType>(PropertyName##Property, PropertyName);		\
 	}
 
+// Use this from now on, 'Implement' is more common than 'define'
+#define NS_IMPLEMENT_PROPERTY(ClassName, PropertyType, PropertyName) NS_DEFINE_PROPERTY(ClassName, PropertyType, PropertyName)
+
 #define NS_DECLARE_PROPERTY_STR(PropertyName)												\
 	static const Noesis::DependencyProperty* PropertyName##Property;						\
 	const char* Get##PropertyName() const;													\
@@ -32,6 +35,8 @@
 		Noesis::DependencyObject::SetValue<NsString>(PropertyName##Property, PropertyName);	\
 	}
 
+#define NS_IMPLEMENT_PROPERTY_STR(ClassName, PropertyName) NS_DEFINE_PROPERTY_STR(ClassName, PropertyName)
+
 #define NS_DECLARE_PROPERTY_ENUM(PropertyType, PropertyName)															\
 	static const Noesis::DependencyProperty* PropertyName##Property;													\
 	const PropertyType Get##PropertyName() const;																		\
@@ -47,3 +52,5 @@
 	{																													\
 		Noesis::DependencyObject::SetValue<int>(PropertyName##Property, static_cast<int>(PropertyName));				\
 	}
+
+#define NS_IMPLEMENT_PROPERTY_ENUM(ClassName, PropertyType, PropertyName) NS_DEFINE_PROPERTY_ENUM(ClassName, PropertyType, PropertyName)
